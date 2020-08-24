@@ -1,0 +1,1513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="sixArmHand"
+  xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/sixArmHand</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    </plugin>
+  </gazebo>
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="6.3562527179902E-05 -0.00590971793251037 0.843647614040915"
+        rpy="0 0 0" />
+      <mass
+        value="10.6875075459949" />
+      <inertia
+        ixx="0.369166290134353"
+        ixy="-1.09800431762322E-08"
+        ixz="-2.65717180673806E-05"
+        iyy="0.366929421492863"
+        iyz="-4.40923295784043E-11"
+        izz="0.0155303148832649" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="world"/>
+  <joint name="fixed_base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+  </joint>
+  <link
+    name="shoulderPitch_Link">
+    <inertial>
+      <origin
+        xyz="0.00564619322967518 -0.0388011617673537 2.59837315486067E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.46726632049004" />
+      <inertia
+        ixx="0.000399813771841688"
+        ixy="3.18591804143914E-05"
+        ixz="-5.46038795579012E-10"
+        iyy="0.00028754222084699"
+        iyz="1.36442767870995E-06"
+        izz="0.000254117183590909" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/shoulderPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/shoulderPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulderPitch"
+    type="revolute">
+    <origin
+      xyz="8.8679E-05 -0.185 1.18"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="shoulderPitch_Link" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="1"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="shoulderRoll_Link">
+    <inertial>
+      <origin
+        xyz="-0.0199126166365459 2.89601151149954E-05 -0.0740087713535413"
+        rpy="0 0 0" />
+      <mass
+        value="0.419772107473911" />
+      <inertia
+        ixx="0.000433353050610292"
+        ixy="-2.69038724505281E-07"
+        ixz="-6.24263594181734E-05"
+        iyy="0.000408481342435734"
+        iyz="-1.66550940469567E-08"
+        izz="0.000192251180848283" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/shoulderRoll_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/shoulderRoll_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulderRoll"
+    type="revolute">
+    <origin
+      xyz="0.035 -0.052 0"
+      rpy="0 0 0" />
+    <parent
+      link="shoulderPitch_Link" />
+    <child
+      link="shoulderRoll_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="shoulderYaw_Link">
+    <inertial>
+      <origin
+        xyz="0.00656055179830629 2.90440103517531E-06 -0.10861093303565"
+        rpy="0 0 0" />
+      <mass
+        value="0.403452087830578" />
+      <inertia
+        ixx="0.000244599346494787"
+        ixy="1.67313795390288E-08"
+        ixz="8.78933058031097E-06"
+        iyy="0.000203262269064636"
+        iyz="-7.30893918984527E-07"
+        izz="0.000136352484194931" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/shoulderYaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/shoulderYaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="shoulderYaw"
+    type="revolute">
+    <origin
+      xyz="-0.035009 0 -0.116"
+      rpy="0 0 0" />
+    <parent
+      link="shoulderRoll_Link" />
+    <child
+      link="shoulderYaw_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="elbowRoll_Link">
+    <inertial>
+      <origin
+        xyz="-0.00738820409777829 -1.00321901477796E-06 -0.0593095691808454"
+        rpy="0 0 0" />
+      <mass
+        value="0.151796397464374" />
+      <inertia
+        ixx="0.000189801415883418"
+        ixy="-3.17669130469068E-10"
+        ixz="-3.78850276737954E-05"
+        iyy="0.000182437215525365"
+        iyz="-1.37670316430067E-09"
+        izz="8.44118119449699E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/elbowRoll_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/elbowRoll_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbowRoll"
+    type="revolute">
+    <origin
+      xyz="0.034989 0 -0.144"
+      rpy="0 0 0" />
+    <parent
+      link="shoulderYaw_Link" />
+    <child
+      link="elbowRoll_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wristYaw_Link">
+    <inertial>
+      <origin
+        xyz="-0.0110072042858961 9.00744748022486E-06 -0.0919568730668572"
+        rpy="0 0 0" />
+      <mass
+        value="0.335351440910377" />
+      <inertia
+        ixx="0.000196408493546082"
+        ixy="6.85439502098526E-08"
+        ixz="-6.68611866426507E-07"
+        iyy="0.000192751420074017"
+        iyz="4.5521068979922E-08"
+        izz="0.000114531535457464" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/wristYaw_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/wristYaw_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wristYaw"
+    type="revolute">
+    <origin
+      xyz="-0.035008 0 -0.101"
+      rpy="0 0 0" />
+    <parent
+      link="elbowRoll_Link" />
+    <child
+      link="wristYaw_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="wristPitch_Link">
+    <inertial>
+      <origin
+        xyz="0.000861733289080682 0.0016812764550127 -0.0745105520843234"
+        rpy="0 0 0" />
+      <mass
+        value="0.0799816292892163" />
+      <inertia
+        ixx="2.50894522854529E-05"
+        ixy="-1.27452216950587E-07"
+        ixz="1.3290884331058E-06"
+        iyy="3.68917834676378E-05"
+        iyz="-3.66388617266229E-09"
+        izz="1.4492968393251E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/wristPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/wristPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wristPitch"
+    type="revolute">
+    <origin
+      xyz="-1.1949E-05 0 -0.159"
+      rpy="0 0 0" />
+    <parent
+      link="wristYaw_Link" />
+    <child
+      link="wristPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="CMCXX_Link">
+    <inertial>
+      <origin
+        xyz="-0.00686726816752589 0.0140780721129675 0.00981142675345359"
+        rpy="0 0 0" />
+      <mass
+        value="0.024499897749101" />
+      <inertia
+        ixx="5.53070326477826E-06"
+        ixy="9.08262139239753E-08"
+        ixz="-1.29518804840443E-07"
+        iyy="4.63806899598326E-06"
+        iyz="9.03892420528738E-07"
+        izz="1.75455470557498E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/CMCXX_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/CMCXX_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="CMCXX"
+    type="revolute">
+    <origin
+      xyz="0.029304 0.018361 -0.06071"
+      rpy="0.2618 0.17461 0" />
+    <parent
+      link="wristPitch_Link" />
+    <child
+      link="CMCXX_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MCXX_Link">
+    <inertial>
+      <origin
+        xyz="-0.0194043184012659 0.00700214256667242 -6.74830684764816E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.011754229849431" />
+      <inertia
+        ixx="7.29057624653911E-07"
+        ixy="5.00698001995572E-07"
+        ixz="7.23401453610666E-09"
+        iyy="1.57194618143418E-06"
+        iyz="-3.24812131783767E-09"
+        izz="1.63912335390482E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCXX_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCXX_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MCXX"
+    type="revolute">
+    <origin
+      xyz="-0.0071297 0.020958 -0.016239"
+      rpy="-1.5708 -1.3043 1.7628" />
+    <parent
+      link="CMCXX_Link" />
+    <child
+      link="MCXX_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="DIPXX_Link">
+    <inertial>
+      <origin
+        xyz="0.0175635726771348 -0.00214075595633695 -0.000834098286775109"
+        rpy="0 0 0" />
+      <mass
+        value="0.00414583645243157" />
+      <inertia
+        ixx="1.34865192726364E-07"
+        ixy="2.15174090959469E-08"
+        ixz="-5.21798695756263E-09"
+        iyy="4.1571728795326E-07"
+        iyz="2.77385730813226E-10"
+        izz="3.18396659804521E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPXX_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPXX_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="DIPXX"
+    type="revolute">
+    <origin
+      xyz="-0.039877 0.013184 -0.00075"
+      rpy="3.1416 0 -3.1416" />
+    <parent
+      link="MCXX_Link" />
+    <child
+      link="DIPXX_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MCPFirstPitch_Link">
+    <inertial>
+      <origin
+        xyz="-3.5994720111298E-05 0.000558365941395605 -0.0209824876083927"
+        rpy="0 0 0" />
+      <mass
+        value="0.00422294438972412" />
+      <inertia
+        ixx="4.20193534270754E-07"
+        ixy="-7.07215637016003E-10"
+        ixz="2.48143462565004E-09"
+        iyy="4.49745859832904E-07"
+        iyz="-1.19967170913161E-08"
+        izz="9.18449817266635E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPFirstPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPFirstPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MCPFirstPitch"
+    type="revolute">
+    <origin
+      xyz="0.028991 0 -0.117"
+      rpy="0 0 0" />
+    <parent
+      link="wristPitch_Link" />
+    <child
+      link="MCPFirstPitch_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="PIPFirstPitch_Link">
+    <inertial>
+      <origin
+        xyz="4.78315139002677E-06 -0.000498217696923819 -0.00869400245624247"
+        rpy="0 0 0" />
+      <mass
+        value="0.00215674304641878" />
+      <inertia
+        ixx="8.60904960368894E-08"
+        ixy="2.6722587409329E-12"
+        ixz="-1.80926938244238E-11"
+        iyy="9.58672201831221E-08"
+        iyz="1.72814058993956E-09"
+        izz="4.3245271581415E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPFirstPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPFirstPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="PIPFirstPitch"
+    type="revolute">
+    <origin
+      xyz="0 0.00044993 -0.039997"
+      rpy="0 0 0" />
+    <parent
+      link="MCPFirstPitch_Link" />
+    <child
+      link="PIPFirstPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="DIPFirstPitch_Link">
+    <inertial>
+      <origin
+        xyz="-9.27453661033611E-07 -0.000508218924932802 -0.00863632266206432"
+        rpy="0 0 0" />
+      <mass
+        value="0.00149494074524285" />
+      <inertia
+        ixx="6.41872663918503E-08"
+        ixy="5.06726148144377E-12"
+        ixz="-2.13884665551903E-13"
+        iyy="7.82170719915641E-08"
+        iyz="9.61540568787346E-10"
+        izz="2.58321536074877E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPFirstPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPFirstPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="DIPFirstPitch"
+    type="revolute">
+    <origin
+      xyz="0 0.00041158 -0.022996"
+      rpy="0 0 0" />
+    <parent
+      link="PIPFirstPitch_Link" />
+    <child
+      link="DIPFirstPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MCPSecondPitch_Link">
+    <inertial>
+      <origin
+        xyz="-3.5994825934001E-05 0.000284140611486794 -0.0209879920475703"
+        rpy="0 0 0" />
+      <mass
+        value="0.00422294447928706" />
+      <inertia
+        ixx="4.20193571981658E-07"
+        ixy="-6.74763708561799E-10"
+        ixz="2.49046429643885E-09"
+        iyy="4.49371276863409E-07"
+        iyz="-1.66689985535371E-08"
+        izz="9.22196055569579E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPSecondPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPSecondPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MCPSecondPitch"
+    type="revolute">
+    <origin
+      xyz="0.01099 0 -0.127"
+      rpy="0 0 0" />
+    <parent
+      link="wristPitch_Link" />
+    <child
+      link="MCPSecondPitch_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="PIPSecondPitch_Link">
+    <inertial>
+      <origin
+        xyz="4.78340618327577E-06 -0.000498217725054179 -0.00869400289720274"
+        rpy="0 0 0" />
+      <mass
+        value="0.00215674315990334" />
+      <inertia
+        ixx="8.6090500631659E-08"
+        ixy="2.67444648982479E-12"
+        ixz="-1.808980999725E-11"
+        iyy="9.58672259532435E-08"
+        iyz="1.72813837586447E-09"
+        izz="4.32452761012241E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPSecondPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPSecondPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="PIPSecondPitch"
+    type="revolute">
+    <origin
+      xyz="0 -7.2753E-05 -0.04"
+      rpy="0 0 0" />
+    <parent
+      link="MCPSecondPitch_Link" />
+    <child
+      link="PIPSecondPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="DIPSecondPitch_Link">
+    <inertial>
+      <origin
+        xyz="-9.27453660946875E-07 -0.000508218924699017 -0.00863632266205938"
+        rpy="0 0 0" />
+      <mass
+        value="0.00149494074524285" />
+      <inertia
+        ixx="6.41872663918512E-08"
+        ixy="5.06726148157971E-12"
+        ixz="-2.13884665626898E-13"
+        iyy="7.82170719915645E-08"
+        iyz="9.61540568787026E-10"
+        izz="2.5832153607487E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPSecondPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPSecondPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="DIPSecondPitch"
+    type="revolute">
+    <origin
+      xyz="0 0.00041158 -0.022996"
+      rpy="0 0 0" />
+    <parent
+      link="PIPSecondPitch_Link" />
+    <child
+      link="DIPSecondPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MCPThirdPitch_Link">
+    <inertial>
+      <origin
+        xyz="-3.59947201113231E-05 0.000558365941430161 -0.0209824876083783"
+        rpy="0 0 0" />
+      <mass
+        value="0.00422294438972405" />
+      <inertia
+        ixx="4.20193534270735E-07"
+        ixy="-7.07215637015877E-10"
+        ixz="2.48143462565172E-09"
+        iyy="4.49745859832886E-07"
+        iyz="-1.19967170913212E-08"
+        izz="9.18449817266638E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPThirdPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPThirdPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MCPThirdPitch"
+    type="revolute">
+    <origin
+      xyz="-0.00700879270537467 0 -0.116999473609129"
+      rpy="0 0 0" />
+    <parent
+      link="wristPitch_Link" />
+    <child
+      link="MCPThirdPitch_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="PIPThirdPitch_Link">
+    <inertial>
+      <origin
+        xyz="4.7815728599198E-06 -0.000498217579745386 -0.0086939995826098"
+        rpy="0 0 0" />
+      <mass
+        value="0.00215674233408469" />
+      <inertia
+        ixx="8.60904657484076E-08"
+        ixy="2.65945407217186E-12"
+        ixz="-1.81117151826609E-11"
+        iyy="9.58671819174496E-08"
+        iyz="1.72815466220683E-09"
+        izz="4.32452446499357E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPThirdPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPThirdPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="PIPThirdPitch"
+    type="revolute">
+    <origin
+      xyz="0 0.00044993 -0.039997"
+      rpy="0 0 0" />
+    <parent
+      link="MCPThirdPitch_Link" />
+    <child
+      link="PIPThirdPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="DIPThirdPitch_Link">
+    <inertial>
+      <origin
+        xyz="-9.27453660857537E-07 -0.000508218924755943 -0.00863632266206249"
+        rpy="0 0 0" />
+      <mass
+        value="0.00149494074524283" />
+      <inertia
+        ixx="6.4187266391849E-08"
+        ixy="5.06726148158765E-12"
+        ixz="-2.13884665948821E-13"
+        iyy="7.82170719915627E-08"
+        iyz="9.61540568787658E-10"
+        izz="2.58321536074867E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPThirdPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPThirdPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="DIPThirdPitch"
+    type="revolute">
+    <origin
+      xyz="0 0.00041158 -0.022996"
+      rpy="0 0 0" />
+    <parent
+      link="PIPThirdPitch_Link" />
+    <child
+      link="DIPThirdPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="MCPFourthPitch_Link">
+    <inertial>
+      <origin
+        xyz="-3.59943218010347E-05 0.00083272524861927 -0.0209733911034423"
+        rpy="0 0 0" />
+      <mass
+        value="0.00422294431379341" />
+      <inertia
+        ixx="4.20193518935491E-07"
+        ixy="-7.39573855135048E-10"
+        ixz="2.47197735864419E-09"
+        iyy="4.49998391653736E-07"
+        iyz="-7.31241018481763E-09"
+        izz="9.1592431962495E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPFourthPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/MCPFourthPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="MCPFourthPitch"
+    type="revolute">
+    <origin
+      xyz="-0.025008 0 -0.107"
+      rpy="0 0 0" />
+    <parent
+      link="wristPitch_Link" />
+    <child
+      link="MCPFourthPitch_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="PIPFourthPitch_Link">
+    <inertial>
+      <origin
+        xyz="4.78120405220453E-06 -0.000498217559852132 -0.00869399884871536"
+        rpy="0 0 0" />
+      <mass
+        value="0.0021567421655383" />
+      <inertia
+        ixx="8.60904580826341E-08"
+        ixy="2.65655855870832E-12"
+        ixz="-1.81167684111139E-11"
+        iyy="9.58671723248921E-08"
+        iyz="1.72815839657814E-09"
+        izz="4.3245238535718E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPFourthPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/PIPFourthPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="PIPFourthPitch"
+    type="revolute">
+    <origin
+      xyz="0 0.000972979775446664 -0.0399881645155853"
+      rpy="0 0 0" />
+    <parent
+      link="MCPFourthPitch_Link" />
+    <child
+      link="PIPFourthPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="DIPFourthPitch_Link">
+    <inertial>
+      <origin
+        xyz="-9.27453660964223E-07 -0.000508218924747089 -0.00863632266205805"
+        rpy="0 0 0" />
+      <mass
+        value="0.00149494074524286" />
+      <inertia
+        ixx="6.41872663918508E-08"
+        ixy="5.06726148138089E-12"
+        ixz="-2.13884665419395E-13"
+        iyy="7.82170719915644E-08"
+        iyz="9.61540568787198E-10"
+        izz="2.58321536074874E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPFourthPitch_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://sixArmHand/meshes/DIPFourthPitch_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="DIPFourthPitch"
+    type="revolute">
+    <origin
+      xyz="0 0.00041158 -0.022996"
+      rpy="0 0 0" />
+    <parent
+      link="PIPFourthPitch_Link" />
+    <child
+      link="DIPFourthPitch_Link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+
+<!-- ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!--Transmission and actuators-->
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulderPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulderRoll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="shoulderYaw">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="elbowRoll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wristYaw">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wristPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="CMCXX">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="MCXX">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor8">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="DIPXX">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor9">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran10">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="MCPFirstPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor10">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran11">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="PIPFirstPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor11">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran12">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="DIPFirstPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor12">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran13">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="MCPSecondPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor13">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran14">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="PIPSecondPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor14">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran15">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="DIPSecondPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor15">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran16">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="MCPThirdPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor16">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran17">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="PIPThirdPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor17">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran18">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="DIPThirdPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor18">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran19">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="MCPFourthPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor19">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran20">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="PIPFourthPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor20">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran21">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="DIPFourthPitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor21">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+  
+</robot>

@@ -1,0 +1,30 @@
+<launch>
+    <!--Load the joint controllers to param server-->
+    <rosparam file="$(find sixArmHand)/config/controllers.yaml" command="load" />
+
+    <!--Load controllers-->
+    <node name="spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/sixArmHand" args="joint_state_controller
+        shoulderPitch_position_controller
+        shoulderRoll_position_controller
+        shoulderYaw_position_controller
+        elbowRoll_position_controller
+        wristYaw_position_controller
+        wristPitch_position_controller
+        CMCXX_position_controller
+        MCXX_position_controller
+        DIPXX_position_controller
+        MCPFirstPitch_position_controller
+        PIPFirstPitch_position_controller
+        DIPFirstPitch_position_controller
+        MCPSecondPitch_position_controller
+        PIPSecondPitch_position_controller
+        DIPSecondPitch_position_controller
+        MCPThirdPitch_position_controller
+        PIPThirdPitch_position_controller
+        DIPThirdPitch_position_controller
+        MCPFourthPitch_position_controller
+        PIPFourthPitch_position_controller
+        DIPFourthPitch_position_controller" />
+
+</launch>

@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'shoulderPitch', 'shoulderRoll', 'shoulderYaw', 'elbowRoll', 'wristYaw', 'wristPitch', 'CMCXX', 'MCXX', 'DIPXX', 'MCPFirstPitch', 'PIPFirstPitch', 'DIPFirstPitch', 'MCPSecondPitch', 'PIPSecondPitch', 'DIPSecondPitch', 'MCPThirdPitch', 'PIPThirdPitch', 'DIPThirdPitch', 'MCPFourthPitch', 'PIPFourthPitch', 'DIPFourthPitch', ]

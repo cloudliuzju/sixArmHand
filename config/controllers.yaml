@@ -1,0 +1,90 @@
+sixArmHand:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  #1
+  shoulderPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulderPitch
+  #2
+  shoulderRoll_position_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulderRoll
+    #pid_gains: {p: 1, i: 0.001, d: 0.002}
+  #3
+  shoulderYaw_position_controller:
+    type: position_controllers/JointPositionController
+    joint: shoulderYaw
+  #4
+  elbowRoll_position_controller:
+    type: position_controllers/JointPositionController
+    joint: elbowRoll
+  #5
+  wristYaw_position_controller:
+    type: position_controllers/JointPositionController
+    joint: wristYaw
+  #6
+  wristPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: wristPitch
+  #7
+  CMCXX_position_controller:
+    type: position_controllers/JointPositionController
+    joint: CMCXX
+  #8
+  MCXX_position_controller:
+    type: position_controllers/JointPositionController
+    joint: MCXX
+  #9
+  DIPXX_position_controller:
+    type: position_controllers/JointPositionController
+    joint: DIPXX
+  #10
+  MCPFirstPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: MCPFirstPitch
+  #11
+  PIPFirstPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: PIPFirstPitch
+  #12
+  DIPFirstPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: DIPFirstPitch
+  #13
+  MCPSecondPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: MCPSecondPitch
+  #14
+  PIPSecondPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: PIPSecondPitch
+  #15
+  DIPSecondPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: DIPSecondPitch
+  #16
+  MCPThirdPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: MCPThirdPitch
+  #17
+  PIPThirdPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: PIPThirdPitch
+  #18
+  DIPThirdPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: DIPThirdPitch
+  #19
+  MCPFourthPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: MCPFourthPitch
+  #20
+  PIPFourthPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: PIPFourthPitch
+  #21
+  DIPFourthPitch_position_controller:
+    type: position_controllers/JointPositionController
+    joint: DIPFourthPitch
